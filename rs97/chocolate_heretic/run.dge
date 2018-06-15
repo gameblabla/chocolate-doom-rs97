@@ -1,0 +1,2 @@
+#!/bin/sh
+./chocolate-heretic.elf -iwad $1

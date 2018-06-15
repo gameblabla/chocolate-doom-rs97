@@ -1,0 +1,2 @@
+#!/bin/sh
+./chocolate-doom.elf -iwad $1
