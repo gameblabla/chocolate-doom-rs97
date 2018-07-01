@@ -311,11 +311,6 @@ void M_BindCommonDefaults(void)
 	key_up = KEY_UPARROW;
 	key_down = KEY_DOWNARROW;
 	key_fire = KEY_RCTRL;
-	key_use = ' ';
-	key_strafe = KEY_RALT;
-	key_speed = KEY_XBUTTON;
-	//key_prevweapon = KEY_TAB;
-	//key_nextweapon = KEY_BACKSPACE;
 
 	key_map_toggle = KEY_ESCAPE;
 	key_menu_activate  = KEY_ENTER;
@@ -338,9 +333,10 @@ void M_BindCommonDefaults(void)
 	key_straferight = KEY_BACKSPACE;
 	key_fire = KEY_RALT;
 	key_use = KEY_RSHIFT;
-	key_strafe = KEY_RALT;
+	key_strafe = 0;
 	key_speed = KEY_RCTRL;
-	key_nextweapon = ' ';
+	key_nextweapon = KEY_YBUTTON;
+	key_prevweapon = 0;
 }
 
 // 
@@ -396,8 +392,8 @@ void M_BindHereticControls(void)
 	printf("%s\n", __func__);
 	key_invleft = 'l';
 	key_invright = 'r';
-	key_prevweapon = KEY_BACKSPACE;
-	key_nextweapon = KEY_TAB;
+	key_prevweapon = 0;
+	key_nextweapon = KEY_YBUTTON;
 	key_useartifact = 'u';
 
     M_BindIntVariable("key_flyup",          &key_flyup);
@@ -421,8 +417,8 @@ void M_BindHexenControls(void)
 	printf("%s\n", __func__);
 	key_invleft = 'l';
 	key_invright = 'r';
-	key_prevweapon = '[';
-	key_nextweapon = ']';
+	key_prevweapon = 0;
+	key_nextweapon = KEY_YBUTTON;
 	key_invuse = KEY_BACKSPACE;
 	key_jump = KEY_TAB;
 
@@ -448,8 +444,8 @@ void M_BindStrifeControls(void)
 	printf("%s\n", __func__);
 	key_invleft = 'l';
 	key_invright = 'r';
-	key_prevweapon = '[';
-	key_nextweapon = ']';
+	key_prevweapon = 0;
+	key_nextweapon = KEY_YBUTTON;
 	key_invuse = KEY_BACKSPACE;
 	key_jump = KEY_TAB;
 	key_mission = 'u';
