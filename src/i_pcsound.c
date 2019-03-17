@@ -15,7 +15,7 @@
 //	System interface for PC speaker sound.
 //
 
-#include "SDL.h"
+#include <SDL/SDL.h>
 #include <string.h>
 
 #include "doomtype.h"

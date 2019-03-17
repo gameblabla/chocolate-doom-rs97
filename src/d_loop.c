@@ -816,3 +816,42 @@ void D_RegisterLoopCallbacks(loop_interface_t *i)
 {
     loop_interface = i;
 }
+
+// provided string describing the non-vanilla expansion.
+boolean D_NonVanillaRecord(boolean conditional, char *feature)
+{
+    if (!conditional)
+    {
+        return false;
+    }
+
+    printf("Warning: Recording a demo file with a non-vanilla extension "
+           "(%s). Use -strictdemos to disable this extension.\n",
+           feature);
+
+    return true;
+}
+
+
+// If the provided conditional value is true, we're trying to play back
+// a demo that includes a non-vanilla extension. We return true if the
+// conditional is true and it's allowed to use this extension, checking
+// that:
+//  - The -strictdemos command line argument is not provided.
+//  - The given lumpnum identifying the demo to play back identifies a
+//    demo that comes from a .lmp file, not a .wad file.
+//  - Before proceeding, a warning is shown to the user on the console.
+boolean D_NonVanillaPlayback(boolean conditional, int lumpnum,
+                             char *feature)
+{
+    if (!conditional)
+    {
+        return false;
+    }
+    printf("Warning: Playing back a demo file with a non-vanilla extension "
+           "(%s). Use -strictdemos to disable this extension.\n",
+           feature);
+
+    return true;
+}
+

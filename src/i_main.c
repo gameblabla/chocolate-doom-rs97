@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include "SDL.h"
+#include <SDL/SDL.h>
 
 #include "doomtype.h"
 #include "i_system.h"

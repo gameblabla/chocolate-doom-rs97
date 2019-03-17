@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "SDL_joystick.h"
+#include <SDL/SDL_joystick.h>
 
 #include "doomkeys.h"
 #include "joystick.h"

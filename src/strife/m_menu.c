@@ -60,6 +60,7 @@
 #include "m_menu.h"
 #include "p_dialog.h"
 
+#define USE_VIRTUALKEYBOARD
 
 extern void M_QuitStrife(int);
 

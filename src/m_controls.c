@@ -390,13 +390,15 @@ void M_BindHereticControls(void)
 	M_BindCommonDefaults();
 
 	printf("%s\n", __func__);
-	key_invleft = 'l';
-	key_invright = 'r';
+	//key_invleft = 'l';
+	//key_invright = 'r';
 	key_prevweapon = 0;
 	key_nextweapon = KEY_YBUTTON;
-	key_useartifact = 'u';
+	//key_useartifact = 'u';
+	key_strafeleft = KEY_TAB;
+	key_straferight = KEY_BACKSPACE;
 
-    M_BindIntVariable("key_flyup",          &key_flyup);
+    /*M_BindIntVariable("key_flyup",          &key_flyup);
     M_BindIntVariable("key_flydown",        &key_flydown);
     M_BindIntVariable("key_flycenter",      &key_flycenter);
 
@@ -406,7 +408,7 @@ void M_BindHereticControls(void)
 
     M_BindIntVariable("key_invleft",        &key_invleft);
     M_BindIntVariable("key_invright",       &key_invright);
-    M_BindIntVariable("key_useartifact",    &key_useartifact);
+    M_BindIntVariable("key_useartifact",    &key_useartifact);*/
 }
 
 void M_BindHexenControls(void)
@@ -420,7 +422,7 @@ void M_BindHexenControls(void)
 	key_prevweapon = 0;
 	key_nextweapon = KEY_YBUTTON;
 	key_invuse = KEY_BACKSPACE;
-	key_jump = KEY_TAB;
+	key_jump = KEY_XBUTTON;
 
     M_BindIntVariable("key_jump",           &key_jump);
     M_BindIntVariable("mouseb_jump",        &mousebjump);
@@ -447,7 +449,7 @@ void M_BindStrifeControls(void)
 	key_prevweapon = 0;
 	key_nextweapon = KEY_YBUTTON;
 	key_invuse = KEY_BACKSPACE;
-	key_jump = KEY_TAB;
+	key_jump = KEY_XBUTTON;
 	key_mission = 'u';
 	key_invdrop = 'd';
 

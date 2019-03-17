@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 
-#include "SDL_mixer.h"
+#include <SDL/SDL_mixer.h>
 
 #include "textscreen.h"
 #include "m_config.h"

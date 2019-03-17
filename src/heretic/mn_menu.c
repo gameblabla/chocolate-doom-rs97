@@ -42,6 +42,8 @@
 #define SLOTTEXTLEN     16
 #define ASCII_CURSOR '['
 
+#define USE_VIRTUALKEYBOARD
+
 // Types
 
 typedef enum

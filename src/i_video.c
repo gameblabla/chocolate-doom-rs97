@@ -17,7 +17,7 @@
 //
 
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
@@ -2017,7 +2017,7 @@ static void SetVideoMode(screen_mode_t *mode, int w, int h)
 #endif
     }
 
-    ScreenSurface = SDL_SetVideoMode(320, 480, 16, SDL_HWSURFACE);
+    ScreenSurface = SDL_SetVideoMode(320, 240, 16, SDL_HWSURFACE);
     screen = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, screen_bpp, 0, 0, 0, 0);
 
     if (screen == NULL)

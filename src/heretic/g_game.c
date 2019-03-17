@@ -343,11 +343,7 @@ void G_BuildTiccmd(ticcmd_t *cmd, int maketic)
     {
         if (gamekeydown[key_right])
             side += sidemove[speed];
-        if (gamekeydown[key_left])
-            side -= sidemove[speed];
-        if (joyxmove > 0)
-            side += sidemove[speed];
-        if (joyxmove < 0)
+        else if (gamekeydown[key_left])
             side -= sidemove[speed];
     }
     else
@@ -356,25 +352,16 @@ void G_BuildTiccmd(ticcmd_t *cmd, int maketic)
             cmd->angleturn -= angleturn[tspeed];
         if (gamekeydown[key_left])
             cmd->angleturn += angleturn[tspeed];
-        if (joyxmove > 0)
-            cmd->angleturn -= angleturn[tspeed];
-        if (joyxmove < 0)
-            cmd->angleturn += angleturn[tspeed];
     }
 
     if (gamekeydown[key_up])
         forward += forwardmove[speed];
     if (gamekeydown[key_down])
         forward -= forwardmove[speed];
-    if (joyymove < 0)
-        forward += forwardmove[speed];
-    if (joyymove > 0)
-        forward -= forwardmove[speed];
-    if (gamekeydown[key_straferight] || mousebuttons[mousebstraferight]
-     || joybuttons[joybstraferight] || joystrafemove > 0)
+
+    if (gamekeydown[key_straferight])
         side += sidemove[speed];
-    if (gamekeydown[key_strafeleft] || mousebuttons[mousebstrafeleft]
-     || joybuttons[joybstrafeleft] || joystrafemove < 0)
+	else if (gamekeydown[key_strafeleft])
         side -= sidemove[speed];
 
     // Look up/down/center keys

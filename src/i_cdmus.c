@@ -18,8 +18,8 @@
 
 #include <stdio.h>
 
-#include "SDL.h"
-#include "SDL_cdrom.h"
+#include <SDL/SDL.h>
+#include <SDL/SDL_cdrom.h>
 
 #include "doomtype.h"
 

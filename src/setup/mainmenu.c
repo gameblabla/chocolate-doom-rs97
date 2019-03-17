@@ -64,8 +64,10 @@ static void SensibleDefaults(void)
     key_flyup = KEY_INS;
     key_flydown = KEY_DEL;
     key_flycenter = KEY_END;
-    key_prevweapon = ',';
-    key_nextweapon = '.';
+    //key_prevweapon = ',';
+    //key_nextweapon = '.';
+    key_prevweapon = 0;
+    key_nextweapon = KEY_YBUTTON;
     key_invleft = '[';
     key_invright = ']';
     key_message_refresh = '\'';

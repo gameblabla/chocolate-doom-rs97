@@ -20,7 +20,6 @@
 #include <ctype.h>
 #include "h2def.h"
 #include "doomkeys.h"
-#include "i_timer.h"
 #include "i_system.h"
 #include "i_swap.h"
 #include "i_video.h"
@@ -131,6 +130,7 @@ boolean MenuActive;
 int InfoType;
 int messageson = true;
 boolean mn_SuicideConsole;
+boolean demoextend; // from h2def.h
 
 // PRIVATE DATA DEFINITIONS ------------------------------------------------
 
@@ -896,6 +896,11 @@ static void SCNetCheck2(int option)
 
 static void SCLoadGame(int option)
 {
+    if (demoplayback)
+    {
+        // deactivate playback, return control to player
+        demoextend = false;
+    }
     if (!SlotStatus[option])
     {                           // Don't try to load from an empty slot
         return;
@@ -918,27 +923,11 @@ static void SCLoadGame(int option)
 
 static void SCSaveGame(int option)
 {
-#ifdef USE_VIRTUALKEYBOARD
-	int hour, minute, second;
-#endif
     char *ptr;
 
     if (!FileMenuKeySteal)
     {
         FileMenuKeySteal = true;
-        M_StringCopy(oldSlotText, SlotText[option], sizeof(oldSlotText));
-
-#ifdef USE_VIRTUALKEYBOARD
-        hour = leveltime / (TICRATE * 360);
-        minute = leveltime / (TICRATE * 60);
-        second = leveltime / TICRATE;
-
-        if (hour)
-            snprintf(SlotText[option], SLOTTEXTLEN + 2, "MAP%02i %02i:%02iH", gamemap, hour, minute % 60);
-        else
-            snprintf(SlotText[option], SLOTTEXTLEN + 2, "MAP%02i %02i:%02iM", gamemap, minute, second % 60);
-#endif
-
         M_StringCopy(oldSlotText, SlotText[option], sizeof(oldSlotText));
         ptr = SlotText[option];
         while (*ptr)
@@ -1020,6 +1009,12 @@ static void SCClass(int option)
 
 static void SCSkill(int option)
 {
+    if (demoplayback)
+    {
+        // deactivate playback, return control to player
+        demoextend = false;
+    }
+
     PlayerClass[consoleplayer] = MenuPClass;
     G_DeferredNewGame(option);
     SB_SetClassData();
@@ -1645,7 +1640,6 @@ boolean MN_Responder(event_t * event)
     }
     else
     {                           // Editing file names
-#ifndef USE_VIRTUALKEYBOARD
         textBuffer = &SlotText[currentSlot][slotptr];
         if (key == KEY_BACKSPACE)
         {
@@ -1699,31 +1693,6 @@ boolean MN_Responder(event_t * event)
                 return (true);
             }
         }
-#else
-        if (key == KEY_BBUTTON)
-        {
-            M_StringCopy(SlotText[currentSlot], oldSlotText,
-                         sizeof(SlotText[currentSlot]));
-            SlotStatus[currentSlot]--;
-            MN_DeactivateMenu();
-            return (true);
-        }
-        if (key == KEY_ABUTTON)
-        {
-            SlotText[currentSlot][slotptr] = 0; // clear the cursor
-            item = &CurrentMenu->items[CurrentItPos];
-            CurrentMenu->oldItPos = CurrentItPos;
-            if (item->type == ITT_EFUNC)
-            {
-                item->func(item->option);
-                if (item->menu != MENU_NONE)
-                {
-                    SetMenu(item->menu);
-                }
-            }
-            return (true);
-        }
-#endif
         return (true);
     }
     return (false);
